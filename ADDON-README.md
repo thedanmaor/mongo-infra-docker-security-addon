@@ -4,7 +4,7 @@
 It is intended to be used ON TOP of this repo.
 
 ### Usage:
-1. Clone the mongo-infra-minikube (MOM) repo, cd into the directory `mongo-infra-minikube/MEKO-opsmanager `
+1. Clone the mongo-infra-minikube repo, cd into the directory `mongo-infra-minikube/MEKO-opsmanager `
 2. Update the template files with MongoDB version 8.0.4-ent (defaults are 6.0.0-ent\5.0.0-ent) for both the AppDB & the MongoDB replica sample
 3. Run `bash quick-start.sh` to deploy OM + AppDB into the local minikube cluster (This process takes ~25 mins)
    * Select EKO version `1.30.0` & Ops Manager version `8.0.2`
