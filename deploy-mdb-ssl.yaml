@@ -44,4 +44,4 @@ spec:
             resources:
               limits:
                 cpu: "0.333"
-                memory: deploy_mem_goes_here
+                memory: "700Mi"
