@@ -42,7 +42,7 @@ do
       break
       ;;
       Deploy-MDB-User)
-      kubectl apply -f mdbu.yaml
+      kubectl apply -f deploy-mdbu.yaml
       break
       ;;
       Quit)
