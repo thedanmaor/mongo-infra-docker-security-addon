@@ -1,6 +1,6 @@
 # Usage
 
-## This is an Add-on to the https://github.com/karl-denby/mongo-infra-minikube/ repo by Karl Denby
+## This is a security add-on for the `https://github.com/karl-denby/mongo-infra-minikube` repo by Karl Denby
 It is intended to be used ON TOP of this repo.
 
 ### Usage:
