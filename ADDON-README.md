@@ -3,6 +3,9 @@
 ## This is a security add-on for the `https://github.com/karl-denby/mongo-infra-minikube` repo by Karl Denby.
 It is intended to be used ON TOP of this repo.
 
+## Problem to solve:
+
+Automatically Enables **TLS** and **Authorization** as well as deploys a managed user for **Authentication** on top of your existing Replica Set Sample.
 ### Usage:
 
 #### Before using this repo.
@@ -12,7 +15,7 @@ It is intended to be used ON TOP of this repo.
    * Select EKO version `1.30.0` & Ops Manager version `8.0.2`.
 4. Run `bash extras.sh` and choose the option `Deploy-Sample` (This process takes ~10 mins).
 
-### After you have a running cluster with OM, AppDB & the sample replica set
+### After you have a running cluster with OM, AppDB & the sample replica set:
 5. Clone **this** repo into the `mongo-infra-minikube/MEKO-opsmanager directory` using these commands:
 ```
 git clone https://github.com/thedanmaor/mongo-infra-docker-security-addon.git 
