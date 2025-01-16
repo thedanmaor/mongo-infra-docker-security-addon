@@ -37,8 +37,7 @@ do
   case $opt in
       Deploy-Secure-Sample)
       ./create-certificates.sh
-      kubectl apply -f deploy-mdb-ssl.yaml
-      cd ..
+      kubectl apply -f deploy-mdb-ssl.yaml && echo "Deployed Secure Sample Succesfully"
       break
       ;;
       Deploy-MDB-User)
