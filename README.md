@@ -25,10 +25,10 @@ git clone https://github.com/thedanmaor/mongo-infra-docker-security-addon.git
 mv mongo-infra-docker-security-addon/* .
 rm -rf mongo-infra-docker-security-addon
 ```
-2. Run `bash ssl-extras.sh`  and choose the option `Deploy-SSL-on-top-of-Sample` (This process takes ~10 mins).
-3. Run `bash ssl-extras.sh`  and choose the option `Deploy-MDB-User`(This process takes ~1 mins).
+2. Run `bash security-extras.sh`  and choose the option `Deploy-Secure-Sample` (This process takes ~10 mins).
+3. Run `bash security-extras.sh`  and choose the option `Deploy-MDB-User`(This process takes ~1 mins).
 
 ### Cleanup
-After you run `bash clean-up.sh` to remove the cluster, also run `bash cleanup-old-certs` to remove all old certificate files from the folder.
+After you run `bash clean-up.sh` to remove the cluster, also run `bash cleanup-old-certs.sh` to remove all old certificate files from the folder.
 
 © Dan Maor (2025)
