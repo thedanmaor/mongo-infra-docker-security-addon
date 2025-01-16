@@ -9,7 +9,7 @@ Allows you to deploy a sample replica set which has **TLS** and **Authorization*
 ### Usage:
 ## Before using this repo:
 1. Clone the [mongo-infra-minikube](https://github.com/karl-denby/mongo-infra-minikube) repo, cd into the directory `mongo-infra-minikube/MEKO-opsmanager`.
-2. Update the template files with MongoDB version 8.0.4-ent (defaults are 6.0.0-ent\5.0.0-ent) for both the AppDB & the MongoDB replica sample.
+2. _**Update the template files with MongoDB version `8.0.4-ent`**_ (the defaults from the repo are 6.0.0-ent\5.0.0-ent) for both the AppDB & the MongoDB replica sample.
 3. Run `bash quick-start.sh` to deploy OM + AppDB into the local minikube cluster (This process can take ~25 - ~35 mins).
    * Select EKO version `1.30.0` & Ops Manager version `8.0.2`.
 4. Portforward local traffic into the cluster with `kubectl port-forward pod/mongo-infra-minikube-0 8080:8080 2>&1 > /dev/null &` 
@@ -23,7 +23,7 @@ git clone https://github.com/thedanmaor/mongo-infra-docker-security-addon.git
 mv mongo-infra-docker-security-addon/* .
 rm -rf mongo-infra-docker-security-addon
 ```
-2. Run `bash security-extras.sh`  and choose the option `Deploy-Secure-Sample` & Run `kubectl delete pod/my-replica-sample-0` in order to speed along the re-deployment process. (This process will take ~10-15 mins).
+2. Run `bash security-extras.sh`  and choose the option `Deploy-Secure-Sample` & Run `kubectl delete pod/my-replica-sample-0` in order to speed along the re-deployment process. (This process will take ~10-15 mins). _**The Secure sample is pre-configured to use MongoDB version `8.0.4-ent`**_
 4. Run `bash security-extras.sh`  and choose the option `Deploy-MDB-User`(This process takes ~1 mins).
 
 ### Cleanup
