@@ -1,17 +1,17 @@
-# Usage
+# mongo-infra-docker-security-addon
 
 ## This is a security add-on for the [mongo-infra-minikube](https://github.com/karl-denby/mongo-infra-minikube) repo by Karl Denby.
 It is intended to be used ON TOP of this repo.
 
-## Problem this repo solves:
+### The problem this repo solves:
 Allows you to deploy a sample replica set which has **TLS** and **Authorization** enabled as well as deploys a managed user for **Authentication** on top of your existing Replica Set Sample. This can be used to Repro secure deployment issues on K8s.
 
-### Usage:
+## Usage:
 
-## Notes:
+### Notes:
 The default name for the replica set is "my-sample-replica", the certificates and yaml configurations all use this naming scheme. if you intened to use a different name please update it in *ALL* relevant places in both repos.
 
-## Before using this repo:
+### Before using this repo:
 1. Clone the [mongo-infra-minikube](https://github.com/karl-denby/mongo-infra-minikube) repo, cd into the directory `mongo-infra-minikube/MEKO-opsmanager`.
 2. _**Update the template files with MongoDB version `8.0.4-ent`**_ (the defaults from the repo are 6.0.0-ent\5.0.0-ent) for both the AppDB & the MongoDB replica sample.
 3. Run `bash quick-start.sh` to deploy OM + AppDB into the local minikube cluster (This process can take ~25 - ~35 mins).
@@ -30,7 +30,7 @@ rm -rf mongo-infra-docker-security-addon
 2. Run `bash security-extras.sh`  and choose the option `Deploy-Secure-Sample` & Run `kubectl delete pod/my-replica-sample-0` in order to speed along the re-deployment process. (This process will take ~10-15 mins). _**The Secure sample is pre-configured to use MongoDB version `8.0.4-ent`**_
 4. Run `bash security-extras.sh`  and choose the option `Deploy-MDB-User`(This process takes ~1 mins).
 
-### Cleanup
+## Cleanup
 After you run `bash clean-up.sh` to remove the cluster, also run `bash cleanup-old-certs.sh` to remove all old certificate files from the folder.
 
 © Dan Maor (2025)
