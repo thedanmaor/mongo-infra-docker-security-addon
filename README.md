@@ -16,7 +16,7 @@ Allows you to deploy a sample replica set which has **TLS** and **Authorization*
 5. Run `bash extras.sh` and choose the option `Deploy-Sample` (This process takes ~10 mins).
    This will setup the organization and deploy a non-secure Sample.
 
-// kubectl delete pod/my-replica-sample-0 before deployinth the ssl set
+<!-- kubectl delete pod/my-replica-sample-0 before deployinth the ssl set -->
 
 ### After you have a running cluster with OM, AppDB & port forwarding open:
 1. Clone **this** repo into the `mongo-infra-minikube/MEKO-opsmanager directory` using these commands:
