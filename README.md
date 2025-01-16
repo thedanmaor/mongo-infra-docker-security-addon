@@ -16,8 +16,6 @@ Allows you to deploy a sample replica set which has **TLS** and **Authorization*
 5. Run `bash extras.sh` and choose the option `Deploy-Sample` (This process takes ~10 mins).
    This will setup the organization and deploy a non-secure Sample.
 
-<!-- kubectl delete pod/my-replica-sample-0 before deployinth the ssl set -->
-
 ### After you have a running cluster with OM, AppDB & port forwarding open:
 1. Clone **this** repo into the `mongo-infra-minikube/MEKO-opsmanager directory` using these commands:
 ```
@@ -25,8 +23,8 @@ git clone https://github.com/thedanmaor/mongo-infra-docker-security-addon.git
 mv mongo-infra-docker-security-addon/* .
 rm -rf mongo-infra-docker-security-addon
 ```
-2. Run `bash security-extras.sh`  and choose the option `Deploy-Secure-Sample` (This process takes ~10 mins).
-3. Run `bash security-extras.sh`  and choose the option `Deploy-MDB-User`(This process takes ~1 mins).
+2. Run `bash security-extras.sh`  and choose the option `Deploy-Secure-Sample` & Run `kubectl delete pod/my-replica-sample-0` in order to speed along the re-deployment process. (This process will take ~10-15 mins).
+4. Run `bash security-extras.sh`  and choose the option `Deploy-MDB-User`(This process takes ~1 mins).
 
 ### Cleanup
 After you run `bash clean-up.sh` to remove the cluster, also run `bash cleanup-old-certs.sh` to remove all old certificate files from the folder.
