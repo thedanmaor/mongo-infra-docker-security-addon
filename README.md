@@ -1,36 +1,109 @@
-# mongo-infra-docker-security-addon
+# Mongo-Infra-Docker-Security-Addon
 
-## This is a security add-on for the [mongo-infra-minikube](https://github.com/karl-denby/mongo-infra-minikube) repo by Karl Denby.
-It is intended to be used ON TOP of this repo.
+## Overview
 
-### The problem this repo solves:
-Allows you to deploy a sample replica set which has **TLS** and **Authorization** enabled as well as deploys a managed user for **Authentication** on top of your existing Replica Set Sample. This can be used to Repro secure deployment issues on K8s.
+This is a **security add-on** for the [`mongo-infra-minikube`](https://github.com/karl-denby/mongo-infra-minikube) repository, created by Karl Denby. It is designed to work *on top of* the `mongo-infra-minikube` repository to provide added security configurations.
 
-## Usage:
+### Problem this Add-On Solves:
 
-### Notes:
-The default name for the replica set is "my-sample-replica", the certificates and yaml configurations all use this naming scheme. if you intened to use a different name please update it in *ALL* relevant places in both repos.
+This repository allows you to deploy a **sample replica set** with the following security features enabled:
+- **TLS Encryption**
+- **Authorization**
+- A managed user for **Authentication**
 
-### Before using this repo:
-1. Clone the [mongo-infra-minikube](https://github.com/karl-denby/mongo-infra-minikube) repo, cd into the directory `mongo-infra-minikube/MEKO-opsmanager`.
-2. _**Update the template files with MongoDB version `8.0.4-ent`**_ (the defaults from the repo are 6.0.0-ent\5.0.0-ent) for both the AppDB & the MongoDB replica sample.
-3. Run `bash quick-start.sh` to start up the minikube cluster and deploy OM + AppDB into it (This process can take ~25-35 minutes).
-   * Select custom EKO version `1.30.0` & custom  Ops Manager version `8.0.2`.
-4. Port-forward localhost traffic into the cluster with `kubectl port-forward pod/mongo-infra-minikube-0 8080:8080 2>&1 > /dev/null &` 
-5. Run `bash extras.sh` and choose the option `Deploy-Sample` (This process takes ~10-15 minutes).
-   This will setup the organization and deploy a non-secure Sample.
+This setup gives you a secure deployment environment for MongoDB, enabling you to reproduce and test secure deployment issues on Kubernetes (K8s).
 
-### After you have a running cluster with OM, AppDB & port forwarding open:
-1. Clone **this** repo into the `mongo-infra-minikube/MEKO-opsmanager directory` using these commands:
-```
-git clone https://github.com/thedanmaor/mongo-infra-docker-security-addon.git 
-mv mongo-infra-docker-security-addon/* .
-rm -rf mongo-infra-docker-security-addon
-```
-2. Run `bash security-extras.sh`  and choose the option `Deploy-Secure-Sample` & Run `kubectl delete pod/my-replica-sample-0` in order to speed along the re-deployment process. (This process will take ~10-15 minutes). _**The Secure sample is pre-configured to use MongoDB version `8.0.4-ent`**_
-4. Run `bash security-extras.sh`  and choose the option `Deploy-MDB-User`(This process takes ~1 minute).
+---
 
-## Cleanup
-After you run `bash clean-up.sh` to remove the cluster, also run `bash cleanup-old-certs.sh` to remove all old certificate files from the folder.
+## Usage Instructions
+
+### Important Notes:
+- The **default replica set name** is `my-sample-replica`. All certificates and YAML configurations are tied to this naming scheme. If you intend to use a different name, make sure to update it in **all relevant files** across both repositories.
+
+---
+
+### Prerequisites: (Before Using This Add-On)
+
+1. **Clone the Base Repository**:  
+   Clone the `mongo-infra-minikube` repository and navigate into its `MEKO-opsmanager` directory:  
+   ```bash
+   git clone https://github.com/karl-denby/mongo-infra-minikube.git
+   cd mongo-infra-minikube/MEKO-opsmanager
+   ```
+
+2. **Update MongoDB Versions**:  
+   Modify the template files in the `mongo-infra-minikube` repo to use MongoDB version **`8.0.4-ent`** (the defaults are `6.0.0-ent` or `5.0.0-ent`) for both the **AppDB** and the **Replica Set Sample**.
+
+3. **Deploy the Base Cluster**:  
+   Execute the `quick-start.sh` script to create the Minikube cluster and deploy Ops Manager + AppDB:  
+   ```bash
+   bash quick-start.sh
+   ```
+   - During the setup, **select the following versions** when prompted:  
+     - Custom EKO Version: `1.30.0`  
+     - Custom Ops Manager Version: `8.0.2`  
+   - Note: The deployment process may take **25-35 minutes** to complete.
+
+4. **Port-Forward Localhost Traffic**:  
+   To enable access to the cluster, run the following command:  
+   ```bash
+   kubectl port-forward pod/mongo-infra-minikube-0 8080:8080 2>&1 > /dev/null &
+   ```
+
+5. **Deploy the Non-Secure Sample**:  
+   Run the `extras.sh` script and select the `Deploy-Sample` option:  
+   ```bash
+   bash extras.sh
+   ```
+   - This will create the organization and deploy a **non-secure sample** replica set (takes approximately **10-15 minutes**).
+
+---
+
+### Steps to Enable Security with This Add-On:
+
+1. **Clone This Repository**:  
+   Clone the `mongo-infra-docker-security-addon` repository *into the `MEKO-opsmanager` directory* of the `mongo-infra-minikube` repository:  
+   ```bash
+   git clone https://github.com/thedanmaor/mongo-infra-docker-security-addon.git
+   mv mongo-infra-docker-security-addon/* .
+   rm -rf mongo-infra-docker-security-addon
+   ```
+
+2. **Deploy Secure Sample Replica Set**:  
+   Run the `security-extras.sh` script and choose the `Deploy-Secure-Sample` option:  
+   ```bash
+   bash security-extras.sh
+   ```
+   - Then delete the non-secure sample pod to expedite the redeployment:  
+     ```bash
+     kubectl delete pod/my-replica-sample-0
+     ```
+   - The redeployment process will take approximately **10-15 minutes**.  
+   - **Note:** The secure sample is pre-configured to use MongoDB version **`8.0.4-ent`**.
+
+3. **Deploy the MongoDB User**:  
+   Run the `security-extras.sh` script again, and choose the `Deploy-MDB-User` option to create a managed MongoDB user:  
+   ```bash
+   bash security-extras.sh
+   ```
+   - This process takes approximately **1 minute**.
+
+---
+
+## Cleanup Instructions
+
+1. **Remove the Cluster**:  
+   After tearing down the cluster using the base repository's cleanup script:  
+   ```bash
+   bash clean-up.sh
+   ```
+
+2. **Remove Old Certificates**:  
+   Clean up the old certificate files to maintain a clutter-free environment:  
+   ```bash
+   bash cleanup-old-certs.sh
+   ```
+
+---
 
 © Dan Maor (2025)
