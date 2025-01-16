@@ -1,6 +1,6 @@
 #!/bin/bash
 # Cleanup old certs
-bash ./cleanup-old-certs
+bash ./cleanup-old-certs.sh
 
 echo "Generating New Certificates"
 # 1 generate root CA
