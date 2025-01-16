@@ -7,6 +7,10 @@ It is intended to be used ON TOP of this repo.
 Allows you to deploy a sample replica set which has **TLS** and **Authorization** enabled as well as deploys a managed user for **Authentication** on top of your existing Replica Set Sample. This can be used to Repro secure deployment issues on K8s.
 
 ### Usage:
+
+## Notes:
+The default name for the replica set is "my-sample-replica", the certificates and yaml configurations all use this naming scheme. if you intened to use a different name please update it in *ALL* relevant places in both repos.
+
 ## Before using this repo:
 1. Clone the [mongo-infra-minikube](https://github.com/karl-denby/mongo-infra-minikube) repo, cd into the directory `mongo-infra-minikube/MEKO-opsmanager`.
 2. _**Update the template files with MongoDB version `8.0.4-ent`**_ (the defaults from the repo are 6.0.0-ent\5.0.0-ent) for both the AppDB & the MongoDB replica sample.
