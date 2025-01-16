@@ -31,11 +31,11 @@ do
 done
 
 # Create deployment
-deployment_options=("Deploy-SSL-on-top-of-Sample" "Deploy-MDB-User" "Quit")
+deployment_options=("Deploy-Secure-Sample" "Deploy-MDB-User" "Quit")
 select opt in "${deployment_options[@]}"
 do
   case $opt in
-      Deploy-SSL-on-top-of-Sample)
+      Deploy-Secure-Sample)
       ./create-certificates.sh
       kubectl apply -f deploy-mdb-ssl.yaml
       cd ..
