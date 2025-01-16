@@ -12,8 +12,7 @@ Allows you to deploy a sample replica set which has **TLS** and **Authorization*
 2. Update the template files with MongoDB version 8.0.4-ent (defaults are 6.0.0-ent\5.0.0-ent) for both the AppDB & the MongoDB replica sample.
 3. Run `bash quick-start.sh` to deploy OM + AppDB into the local minikube cluster (This process can take ~25 - ~35 mins).
    * Select EKO version `1.30.0` & Ops Manager version `8.0.2`.
-4. Portforward local traffic into the cluster with
-5. `kubectl port-forward pod/mongo-infra-minikube-0 8080:8080 2>&1 > /dev/null &` 
+4. Portforward local traffic into the cluster with `kubectl port-forward pod/mongo-infra-minikube-0 8080:8080 2>&1 > /dev/null &` 
 5. Run `bash extras.sh` and choose the option `Deploy-Sample` (This process takes ~10 mins).
    This will setup the organization and deploy a non-secure Sample.
 
